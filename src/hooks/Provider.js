@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 
-import RequestAPI from '../services/RequestAPI';
 import IndexContext from './IndexContext';
+import GetPlanets from '../services/GetPlanets';
 
 function StarWarsPlanetsProvider({ children }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
     async function FetchPlanets() {
-      const planets = await RequestAPI();
-      setData(planets);
+      const allPlanets = await GetPlanets();
+      setData(allPlanets);
     }
     FetchPlanets();
   }, []);
 
+  const contextValue = {
+    data,
+    setData,
+  };
+
   return (
-    <IndexContext.Provider value={ data }>
+    <IndexContext.Provider value={ contextValue }>
       { children }
     </IndexContext.Provider>
   );

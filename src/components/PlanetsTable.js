@@ -5,7 +5,7 @@ import IndexContext from '../hooks/IndexContext';
 const INDICE = 9;
 
 export default function PlanetsTable() {
-  const { results } = useContext(IndexContext);
+  const { data: { results } } = useContext(IndexContext);
 
   if (results) {
     const resultKeys = Object.keys(results[0]);
@@ -17,18 +17,18 @@ export default function PlanetsTable() {
         <caption>StarsWars Planets</caption>
         <thead>
           <tr>
-            {resultKeys.map((eachKey) => (
-              <th key={ eachKey }>
-                {eachKey}
+            {resultKeys.map((eachResultKey) => (
+              <th key={ eachResultKey }>
+                {eachResultKey}
               </th>))}
           </tr>
         </thead>
         <tbody>
           {results.map((result) => (
             <tr key={ result.name }>
-              {resultKeys.map((eachKey) => (
-                <td key={ eachKey }>
-                  {result[eachKey]}
+              {resultKeys.map((resultKey) => (
+                <td key={ resultKey }>
+                  {result[resultKey]}
                 </td>
               ))}
             </tr>
@@ -38,5 +38,5 @@ export default function PlanetsTable() {
     );
   }
 
-  return <div>Loading...</div>;
+  return <section>Loading...</section>;
 }
