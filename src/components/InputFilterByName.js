@@ -15,7 +15,7 @@ export default function InputFilterByName() {
 
   return (
     <label htmlFor="InputFilterByName">
-      Filtro por nome:
+      Filtragem por nome:
       <input
         type="text"
         id="InputFilterByName"

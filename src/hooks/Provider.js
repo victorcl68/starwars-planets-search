@@ -6,12 +6,13 @@ import GetPlanets from '../services/GetPlanets';
 
 function StarWarsPlanetsProvider({ children }) {
   const [data, setData] = useState(null);
-  const [filter, setFilter] = useState({ filterByName: '' });
   const [resultFilterByName, setResultFilterByName] = useState(null);
+  // const [filter, setFilter] = useState({ filterByName: '' });
 
   useEffect(() => {
     async function FetchPlanets() {
       const allPlanets = await GetPlanets();
+      allPlanets.map((planet) => delete planet.residents);
       setData(allPlanets);
       setResultFilterByName(allPlanets);
     }
@@ -21,10 +22,10 @@ function StarWarsPlanetsProvider({ children }) {
   const contextValue = {
     data,
     setData,
-    filter,
-    setFilter,
     resultFilterByName,
     setResultFilterByName,
+    // filter,
+    // setFilter,
   };
 
   return (
