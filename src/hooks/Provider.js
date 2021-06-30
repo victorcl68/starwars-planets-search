@@ -5,12 +5,15 @@ import IndexContext from './IndexContext';
 import GetPlanets from '../services/GetPlanets';
 
 function StarWarsPlanetsProvider({ children }) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
+  const [filter, setFilter] = useState({ filterByName: '' });
+  const [resultFilterByName, setResultFilterByName] = useState(null);
 
   useEffect(() => {
     async function FetchPlanets() {
       const allPlanets = await GetPlanets();
       setData(allPlanets);
+      setResultFilterByName(allPlanets);
     }
     FetchPlanets();
   }, []);
@@ -18,6 +21,10 @@ function StarWarsPlanetsProvider({ children }) {
   const contextValue = {
     data,
     setData,
+    filter,
+    setFilter,
+    resultFilterByName,
+    setResultFilterByName,
   };
 
   return (
