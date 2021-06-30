@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import IndexContext from '../hooks/IndexContext';
 
-const INDICE = 9; // Dá com delete
+const INDICE = 9; // Tentar com o Delete
 
 export default function PlanetsTable() {
   const { data, resultFilterByName } = useContext(IndexContext);
