@@ -40,13 +40,3 @@ export default function PlanetsTable() {
 
   return <section>Loading...</section>;
 }
-
-// {results.map((result) => ( // mudar
-//   <tr key={ result.name }>
-//     {resultKeys.map((resultKey) => (
-//       <td key={ resultKey }>
-//         {result[resultKey]}
-//       </td>
-//     ))}
-//   </tr>
-// ))}
