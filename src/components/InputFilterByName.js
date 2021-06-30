@@ -10,11 +10,10 @@ export default function InputFilterByName() {
   const { setResultFilterByName } = useContext(IndexContext);
 
   const handleChange = ({ target }) => {
-    setFilter({ filterByName: target.value });
-    const filterConst = data.results.filter(
-      (result) => result.name.toLowerCase().includes(filterByName.toLowerCase()),
+    // setFilter({ filterByName: target.value });
+    const filterConst = data.filter(
+      (result) => result.name.toLowerCase().includes(target.value.toLowerCase()),
     );
-    console.log(filterConst);
     setResultFilterByName(filterConst);
   };
 
