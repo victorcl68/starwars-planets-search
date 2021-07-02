@@ -2,16 +2,18 @@ import React, { useContext } from 'react';
 
 import IndexContext from '../hooks/IndexContext';
 import InputFilterByName from './InputFilterByName';
+import InputFilterByNumber from './InputFilterByNumber';
 
 export default function PlanetsTable() {
   const { data, filters: { filterByName: { name } } } = useContext(IndexContext);
 
-  if (data) {
+  if (data.length > 0) {
     const resultKeys = Object.keys(data[0]);
 
     return (
       <section>
         <InputFilterByName />
+        <InputFilterByNumber />
         <table>
           <caption>StarsWars Planets</caption>
           <thead>
@@ -23,7 +25,7 @@ export default function PlanetsTable() {
             </tr>
           </thead>
           <tbody>
-            {data.filter((planet) => (planet.name
+            {data.filter((eachData) => (eachData.name
               .toUpperCase().includes(name.toUpperCase())))
               .map((planets, index) => (
                 <tr key={ index }>
